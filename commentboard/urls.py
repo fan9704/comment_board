@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.conf.urls import include
+from boardapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('captcha',include('captcha.urls')),
+    path('',views.index),
+    path('index/',views.index),
+    path('index/<str:pageindex>',views.index),
+    path('manage/',views.manage),
+    path('post/',views.post),
+    path('login/',views.login),
+    path('logout/',views.logout),
+    path('adminmain/',views.adminmain),
+    path('adminmain/<str:pageindex>/',views.adminmain),
+    path('delete/<int:boardid>/',views.delete), 
+    path('delete/<int:boardid>/<str:deletetype>/',views.delete),
+
+
 ]
